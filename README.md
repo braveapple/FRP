@@ -27,19 +27,42 @@ log_max_days = 3
 
 ```
 [common]
-server_addr = xx.xx.xx.xx # 服务端公网 IP 地址
+# 服务端公网 IP 地址
+server_addr = xx.xx.xx.xx
 server_port = 7000
 token = 12345678
 
+# ssh 代理
 [ssh]
 type = tcp
 local_ip = 127.0.0.1
 local_port = 22
 remote_port = 6000
 
+# web 代理
 [web]
 type = tcp
 local_ip = 127.0.0.1
 local_port = 6666
 remote_port = 8081
+```
+
+在 `/etc/systemd/system` 目录下创建服务文件 frpc.service
+```
+sudo vim /etc/systemd/system/frpc.service
+```
+在 frpc.service 文件中添加如下内容：
+```
+[Unit]
+Description=frpc
+After=network.target
+Wants=network.target
+
+[Service]
+Restart=on-failure
+RestartSec=5
+ExecStart=/opt/frp/frpc -c /opt/frp/frpc.ini
+
+[Install]
+WantedBy=multi-user.target
 ```
