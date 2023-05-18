@@ -22,3 +22,24 @@ log_file = /var/log/frps.log
 log_level = info
 log_max_days = 3
 ```
+
+## 客户端配置 frpc.ini
+
+```
+[common]
+server_addr = xx.xx.xx.xx # 服务端公网 IP 地址
+server_port = 7000
+token = 12345678
+
+[ssh]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 22
+remote_port = 6000
+
+[web]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 6666
+remote_port = 8081
+```
