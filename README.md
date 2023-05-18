@@ -1,7 +1,7 @@
 # FRP
 内网穿透工具 FRP
 
-## 服务端配置
+## 1. 服务端配置
 
 配置 frps.ini 
 ```
@@ -24,7 +24,42 @@ log_level = info
 log_max_days = 3
 ```
 
-## 客户端配置
+在 `/etc/systemd/system` 目录下创建服务文件 frps.service
+```
+sudo vim /etc/systemd/system/frps.service
+```
+
+在 frpc.service 文件中添加如下内容：
+```
+[Unit]
+Description=frps
+After=network.target
+Wants=network.target
+
+[Service]
+# 执行失败后重启
+Restart=on-failure
+# 重启时间间隔
+RestartSec=5
+# frpc 启动命令，可以修改为自己的启动命令
+ExecStart=/opt/frp/frps -c /opt/frp/frps.ini
+
+[Install]
+WantedBy=multi-user.target
+```
+
+设置开机自启并启动服务
+```
+# 刷新服务列表
+systemctl daemon-reload
+# 设置开机自启
+systemctl enable frps
+# 启动服务
+systemctl start frps
+```
+由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
+
+## 2. 客户端配置
 
 配置 frpc.ini
 ```
@@ -84,7 +119,7 @@ systemctl start frpc
 ```
 由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
 
-## 常用的 systemctl 命令
+## 3. 常用的 systemctl 命令
 ```
 # 关闭开机自启
 systemctl disable frpc
