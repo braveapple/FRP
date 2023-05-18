@@ -36,7 +36,7 @@ log_max_days = 3
 sudo vim /etc/systemd/system/frps.service
 ```
 
-在 frpc.service 文件中添加如下内容：
+在 frps.service 文件中添加如下内容：
 ```
 [Unit]
 Description=frps
