@@ -28,7 +28,7 @@ enable_prometheus = true
 # frp 日志配置
 log_file = /var/log/frps.log
 log_level = info
-log_max_days = 3
+log_max_days = 30
 ```
 
 在 `/etc/systemd/system` 目录下创建服务文件 frps.service
