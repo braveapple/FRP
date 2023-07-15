@@ -1,0 +1,15 @@
+[Unit]
+Description=frps
+After=network.target
+Wants=network.target
+
+[Service]
+# 执行失败后重启
+Restart=on-failure
+# 重启时间间隔
+RestartSec=5
+# frpc 启动命令，可以修改为自己的启动命令
+ExecStart=/opt/frp/frps -c /opt/frp/frps.ini
+
+[Install]
+WantedBy=multi-user.target
