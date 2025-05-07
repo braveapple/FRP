@@ -5,8 +5,8 @@
 由于 A 机器不能直接访问 C 机器，因此采用 A 和 C 机器都能访问的 B 机器作为代理服务端。
 这样 A 机器可以通过 B 机器来访问 C 机器。
 
-下载 FRP  
-[FRP 最新版下载地址](https://github.com/fatedier/frp/releases)
+安装 FRP  
+`git clone https://github.com/braveapple/FRP.git`
 
 ## 1. 服务端配置 -> B 机器
 
