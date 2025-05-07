@@ -6,7 +6,10 @@
 这样 A 机器可以通过 B 机器来访问 C 机器。
 
 安装 FRP  
-`git clone https://github.com/braveapple/FRP.git`
+```
+cd /opt
+git clone https://github.com/braveapple/FRP.git
+```
 
 ## 1. 服务端配置 -> B 机器
 
