@@ -66,6 +66,8 @@ systemctl daemon-reload
 systemctl enable frps
 # 启动服务
 systemctl start frps
+# 查看状态
+systemctl status frpc
 ```
 由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
 
@@ -126,6 +128,8 @@ systemctl daemon-reload
 systemctl enable frpc
 # 启动服务
 systemctl start frpc
+# 查看状态
+systemctl status frpc
 ```
 由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
 
