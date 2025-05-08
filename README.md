@@ -5,7 +5,8 @@
 由于 A 机器不能直接访问 C 机器，因此采用 A 和 C 机器都能访问的 B 机器作为代理服务端。
 这样 A 机器可以通过 B 机器来访问 C 机器。
 
-## 1. 安装 FRP  
+## 1. 安装 FRP
+将 FRP 安装到目录 /opt 下
 ```
 cd /opt
 git clone https://github.com/braveapple/FRP.git
