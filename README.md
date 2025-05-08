@@ -5,13 +5,13 @@
 由于 A 机器不能直接访问 C 机器，因此采用 A 和 C 机器都能访问的 B 机器作为代理服务端。
 这样 A 机器可以通过 B 机器来访问 C 机器。
 
-安装 FRP  
+## 1. 安装 FRP  
 ```
 cd /opt
 git clone https://github.com/braveapple/FRP.git
 ```
 
-## 1. 服务端配置 -> B 机器
+## 2. 服务端配置 -> B 机器
 
 配置 frps.ini 
 ```
@@ -71,7 +71,7 @@ systemctl status frpc
 ```
 由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
 
-## 2. 客户端配置 -> C 机器
+## 3. 客户端配置 -> C 机器
 
 配置 frpc.ini
 ```
@@ -133,7 +133,7 @@ systemctl status frpc
 ```
 由于服务可能会在开机时启动失败，因此在设置开机自启命令时，最好在 [Service] 中定义 Restart 和 RestartSec
 
-## 3. 代理服务访问 -> A 机器
+## 4. 代理服务访问 -> A 机器
 
 A 机器 ssh 访问 C 机器
 ```
@@ -150,7 +150,7 @@ A 机器访问 C 机器的 6666 端口的网页
 http://xx.xx.xx.xx:8081
 ```
 
-## 4. 常用的 systemctl 命令
+## 5. 常用的 systemctl 命令
 ```
 # 关闭开机自启
 systemctl disable frpc
